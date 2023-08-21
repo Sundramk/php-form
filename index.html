@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form method="post" action="validation.php">
+        <label for="fullname">Full Name:</label>
+        <input type="text" name="fullname" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>
