@@ -1,20 +1,48 @@
 <?php
+
+
+function verify_name($name) {
+    $pattern = '/^[a-zA-Z ]+$/';
+    $matches = preg_match($pattern, $name);
+
+    if ($matches) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validate_phone($phone) {
+    $pattern = '/^[0-9]{10}$/';
+    $matches = preg_match($pattern, $phone);
+
+    if ($matches) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST["fullname"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
-    $subject = $_POST["subject"];
-    $message = $_POST["message"];
+    $subject = $_POST["subject"]; // cannot validate without precise instructions
+    $message = $_POST["message"]; // cannot validate without precise instructions 
 
     // Perform basic form validation
     if (empty($fullname) || empty($phone) || empty($email) || empty($subject) || empty($message)) {
         echo "All fields are required.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format.";
+    } elseif (!verify_name($fullname)) {
+        echo "invaldi name string";
+    } elseif (!validate_phone($phone)){
+        echo "invalid phone number";
     } else {
         // Connect to MySQL database
         $db_host = "localhost";
-        $db_user = "";
+        $db_user = "root";
         $db_pass = "";
         $db_name = "validation";
 
